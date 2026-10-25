@@ -4,6 +4,7 @@ import (
 
     "fmt"
     "os"
+    "path/filepath"
 
     "io"
     "net/http"
@@ -24,7 +25,7 @@ type newsConfigStruct struct {
 var newsConfig newsConfigStruct
 
 func LoadJson(){
-	JsonNewsAPI, err := os.Open( DIRECTORY + "/Config.json")
+	JsonNewsAPI, err := os.Open( filepath.Join( DIRECTORY , "Config.json" ))
 	if err != nil {
         fmt.Println( err )
 	}
@@ -84,7 +85,7 @@ func NewsInit(){
     JP_news     = ""
     ENG_news    = ""
 
-	JsonNewsAPI, err := os.Open( DIRECTORY + "/News.json")
+	JsonNewsAPI, err := os.Open( filepath.Join( DIRECTORY , "News.json" ))
 	if err != nil {
         fmt.Println( err )
 	}
